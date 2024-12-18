@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: center;
+
+  padding: 4px;
+  background-color: rgb(79, 21, 225);
+}
+
+.form {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background: white;
+  padding: 4px;
+  border-radius: 3px;
+  min-width: 320px;
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+  margin-right: 8px;
+  cursor: pointer;
+}

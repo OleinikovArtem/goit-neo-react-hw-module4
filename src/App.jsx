@@ -1,34 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { getImages } from './services/unsplash'
+
+import SearchBar from './components/SearchBar'
+import ImageGallery from './components/ImageGallery'
+import Loader from './components/Loader'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [images, setImages] = useState([])
+
+  useEffect(() => {
+    getImages().then(setImages)
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <SearchBar onSubmit={(value) => console.log('search value:', value)} />
+      <ImageGallery />
+      <Loader />
+    </div>
   )
 }
 
