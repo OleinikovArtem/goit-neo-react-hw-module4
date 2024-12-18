@@ -1,12 +1,10 @@
 import axios from 'axios';
-import { mockItems } from '../mock';
 
 const ACCESS_KEY = 'nnP3Qj1pM_lXTIZVy_3E547cLU6kzW0A1l69qcN4Mm8'
 
-
-export const getImages = async (page = 1, per_page = 12, query = 'test' ) => {
+export const getImages = async (query, page = 1, per_page = 12) => {
   try {
-      const url = 'https://api.unsplash.com/photos'
+      const url = 'https://api.unsplash.com/search/photos'
 
       const params ={
         page, per_page, query
@@ -16,15 +14,16 @@ export const getImages = async (page = 1, per_page = 12, query = 'test' ) => {
         Authorization: `Client-ID ${ACCESS_KEY}`        
       }
 
-      return mockItems
+      const response = await axios.request({
+        url,
+        headers,
+        params
+      })
 
-      // const response = await axios.request({
-      //   url,
-      //   headers,
-      //   params
-      // })
+      console.log('RESPONSE', response);
+      
 
-      // return response.data || []
+      return response.data.results || []
     }
   catch (error) {
       console.error(error)

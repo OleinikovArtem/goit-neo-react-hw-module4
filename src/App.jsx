@@ -6,16 +6,21 @@ import ImageGallery from './components/ImageGallery'
 import Loader from './components/Loader'
 
 function App() {
+  const [search, setSearch] = useState('');
   const [images, setImages] = useState([])
 
+  const handleSearch = (value) => setSearch(value)
+
   useEffect(() => {
-    getImages().then(setImages)
-  }, [])
+    const searchValue = search.trim();
+    if (!searchValue) return
+    getImages(searchValue).then(setImages)
+  }, [search])
 
   return (
     <div>
-      <SearchBar onSubmit={(value) => console.log('search value:', value)} />
-      <ImageGallery />
+      <SearchBar onSubmit={handleSearch} />
+      <ImageGallery images={images} />
       <Loader />
     </div>
   )

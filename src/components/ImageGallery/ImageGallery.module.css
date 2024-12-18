@@ -1,0 +1,13 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 360px);
+  grid-column-gap: 14px;
+  grid-row-gap: 24px;
+  justify-content: center;
+  margin: 6px auto;
+}
+
+.img {
+  height: 240px;
+  overflow: hidden;
+}
