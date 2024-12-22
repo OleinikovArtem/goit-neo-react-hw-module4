@@ -10,4 +10,5 @@
 .img {
   height: 240px;
   overflow: hidden;
+  cursor: zoom-in;
 }

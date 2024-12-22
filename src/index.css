@@ -17,3 +17,8 @@ img {
   object-fit: cover;
   object-position: 50% 50%;
 }
+
+.app {
+  text-align: center;
+  padding-bottom: 40px;
+}
