@@ -3,12 +3,12 @@ import styles from './ImageGallery.module.css'
 
 import ImageCard from "./ImageCard";
 
-function ImageGallery({ images = [] }) {
+function ImageGallery({ images = [], selectImage }) {
   return (
     <ul className={styles.gallery} >
-      { images.map((image) => (
-          <li  key={image.id} >
-            <ImageCard {...image} />
+      { images.map((image, index) => (
+          <li  key={image.id + index} >
+            <ImageCard {...image} selectImage={selectImage} />
           </li>
         )
       )}
@@ -18,6 +18,7 @@ function ImageGallery({ images = [] }) {
 
 ImageGallery.propTypes = {
   images: PropTypes.array.isRequired,
+  selectImage: PropTypes.func.isRequired,
 }
 
 export default ImageGallery
