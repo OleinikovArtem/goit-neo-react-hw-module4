@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import PropTypes from 'prop-types'
 import styles from './SearchBar.module.css'
 import { IoIosSearch } from "react-icons/io";
@@ -8,6 +9,12 @@ const SearchBar = ({ onSubmit }) => {
     event.preventDefault()
     const data = new FormData(event.target)
     const searchValue = data.get('search')
+
+    if (!searchValue.trim()) {
+      toast.error('Search can\'t be empty')
+      return
+    }
+
     onSubmit(searchValue)
 
     event.target.reset()

@@ -20,9 +20,6 @@ export const getImages = async (query, page = 1, per_page = 12) => {
         params
       })
 
-      console.log('RESPONSE', response);
-      
-
       return response.data
     }
   catch (error) {
