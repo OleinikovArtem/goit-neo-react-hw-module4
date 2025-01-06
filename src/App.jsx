@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { getImages } from './services/unsplash'
 
 import SearchBar from './components/SearchBar'
@@ -10,6 +10,7 @@ import ImageModal from './components/ImageModal'
 import ErrorMessage from './components/ErrorMessage'
 
 const ERROR_MESSAGE = 'Something went wrong. Please try again later. If the error is repeated, check your internet connection or contact the developer.'
+const INFO_MESSAGE = `There were no images found for the keyword "{{example}}", please try using a different word.`
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +46,10 @@ function App() {
         setError(null)
         const { results, total_pages } = await getImages(search, page)
   
+        if (results.length === 0) {
+          toast.info(INFO_MESSAGE.replace('{{example}}', search))
+        }
+
         setImages(images => page === 1 ? results || [] : images.concat(results))
         setWithLoadingMore(total_pages > page)
       } catch (error) {

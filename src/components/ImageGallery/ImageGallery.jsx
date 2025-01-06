@@ -3,7 +3,7 @@ import styles from './ImageGallery.module.css'
 
 import ImageCard from "./ImageCard";
 
-function ImageGallery({ images = [], selectImage }) {
+function ImageGallery({ images = [], selectImage }) {  
   return (
     <ul className={styles.gallery} >
       { images.map((image, index) => (
