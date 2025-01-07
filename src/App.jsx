@@ -23,6 +23,8 @@ function App() {
 
   const handleSearch = async (value) => {
     setSearch(value)
+    setImages([])
+    setPage(1)
   }
 
   const handleLoadMore = async () => {
